@@ -1,0 +1,15 @@
+:root {
+  --gold: #F0A500;
+  --dark-gray: #333333;
+  --green: #28A745;
+  --red: #DC3545;
+  --light-blue: #17A2B8;
+  --white: #FFFFFF;
+  --light-gray: #F8F9FA;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}

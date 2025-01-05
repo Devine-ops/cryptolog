@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+.box{
+    display: flex;
+}
+
+.box .title{
+    color: #111;
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Oxygen';
+    text-transform: uppercase;
+}
+
+.box_coin li{ 
+    background-color: #ccc;
+    border: 1px solid #111;
+}

@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+.header {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.logo a{
+    font-family: 'Oxygen';
+    text-transform: uppercase;
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.logo a:hover{
+    color: var(--gold);
+    
+}
+
+.nav ul{
+    display: flex;
+    margin-top: 8px;
+}
+
+.nav ul li{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin-left: 15px;
+    
+}
+
+.nav a{
+    color: var(--white);
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+    text-transform: uppercase;
+    font-family: 'Oxygen';
+    font-weight: 100;
+    
+}
+
+.nav a:hover{
+    color: var(--gold);
+    text-decoration: underline;
+}
+
+.action .login{ 
+    width: 100px;
+    padding: 6px;
+    background-color: var(--green);
+    border: none;
+    color: var(--dark-gray);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Oxygen';
+    margin-top: 8px;
+    margin-left: 10px;
+    
+}
+
+.action button:hover{
+    background-color: var(--white);
+    transition: 1s;
+}
+
+.action .register{ 
+    width: 100px;
+    padding: 6px;
+    background-color: var(--gold);
+    border: none;
+    color: var(--dark-gray);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Oxygen';
+    margin-top: 8px;
+    margin-left: 10px;
+    
+}
+
+
