@@ -24,27 +24,24 @@ const CryptoPrices = () => {
     if (loading) return <p>Loading Prices...</p>;
 
     return (
-        <div className={styles.box}>
-            
-            <div className={styles.wrap}> 
-                
+
+                <div className={styles.container}>
                     {coins.length > 0 ? (
-                        <ul>
+                        <div className={styles.box}>
                             {coins.map((coin) => (
-                                <li key={coin.id}>
-                                    <img src={coin.image} alt={coin.name} style={{ width: '30px', height: '30px', marginRight: '10px' }} />
+                                <div className={styles.wrap} key={coin.id}>
+                                    <img src={coin.image} alt={coin.name} style={{ width: '60px', height: '60px', margin:'15px auto', display:'block'}} />
                                     {coin.name} ({coin.symbol.toUpperCase()}): ${coin.current_price}
                                     <span style={{ color: coin.price_change_percentage_24h > 0 ? 'green' : 'red' }}>
                                         ({coin.price_change_percentage_24h.toFixed(2)}%)
                                     </span>
-                                </li>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     ) : (
                         <p>Error fetching data...</p>
                     )}
-            </div>
-        </div>
+                </div>
     );
 };
 
