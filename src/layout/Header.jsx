@@ -9,7 +9,7 @@ function Header (){
             <nav className={styles.nav}>
                 <ul>
                     <li><a href="#home">home</a></li>
-                    <li><a href="#marker">maker</a></li>
+                    <li><a href="#marker">market</a></li>
                     <li><a href="#about">about</a></li>
                     <li><a href="#suport">support</a></li>
                 </ul>
