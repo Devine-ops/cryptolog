@@ -1,6 +1,6 @@
 import './App.css'
 import React from 'react';
-import CryptoPrices from '../src/api_coingeko/consumer';
+import CryptoPrices from '../src/api_coingeko/Consumer';
 import Header from '../src/layout/Header';
 
 

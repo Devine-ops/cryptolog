@@ -1,6 +1,6 @@
-import styles from '../styles/consumer.module.css';
+import styles from '../styles/Consumer.module.css';
 import { useEffect, useState } from 'react';
-import { getTop100Coins } from './api';
+import { getTop100Coins } from './Api';
 
 const CryptoPrices = () => {
     const [coins, setCoins] = useState([]);
