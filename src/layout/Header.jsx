@@ -1,37 +1,28 @@
 import styles from '../../src/styles/Header.module.css';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import CreateAccount from '../pages/CreateAccount';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-function Header (){
+function Header() {
+    return (
+        <div className={styles.header}>
+            <h1 className={styles.logo}>
+                <Link className={styles.cryptolog} to="/">crypto.log</Link>
+            </h1>
 
-    return(
-        <Router>
-            <div className={styles.header}>
-                <h1 className={styles.logo}><a href="#home">crypto.log</a></h1>
-            
-                <nav className={styles.nav}>
-                    
-                        <Link to='/'>home</Link>
-                        <Link to='/market'>market</Link>
-                        <Link to='/about'>about</Link>
-                        <Link to='/support'>support</Link>
-                    
-                </nav>
+            <nav className={styles.nav}>
+                <Link to="/" className={styles.link}>home</Link>
+                <Link to="/market" className={styles.link}>market</Link>
+                <Link to="/about" className={styles.link}>about</Link>
+                <Link to="/support" className={styles.link}>support</Link>
+            </nav>
 
-                <div className={styles.action}>
-                    <button className={styles.login}>Login</button>
-                    <button className={styles.register}>Register</button>
-                </div>
+            <div className={styles.action}>
+                <button className={styles.login}>Login</button>
+                <Link to='/createaccount'><
+                    button className={styles.register}>Register</button>
+                </Link>
             </div>
-
-            <Routes>
-                <Route path='../src/pages/CreateAccount.jsx' element={<CreateAccount/>}/>
-            </Routes>
-        </Router>
-    )
-
-
+        </div>
+    );
 }
 
 export default Header;

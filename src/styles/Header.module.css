@@ -9,24 +9,24 @@
     border-bottom: 2px solid var(--gold);
 }
 
-.logo a{
+.cryptolog{
     font-family: 'Oxygen';
     text-transform: uppercase;
     text-decoration: none;
     color: aliceblue;
 }
 
-.logo a:hover{
+.cryptolog:hover{
     color: var(--gold);
     
 }
 
-.nav ul{
+.nav{
     display: flex;
     margin-top: 8px;
 }
 
-.nav ul li{
+.link{
     display: flex;
     justify-content: space-between;
     list-style: none;
@@ -34,7 +34,7 @@
     
 }
 
-.nav a{
+.link{
     color: var(--white);
     text-decoration: none;
     font-size: 18px;
@@ -45,7 +45,7 @@
     
 }
 
-.nav a:hover{
+.link:hover{
     color: var(--gold);
     text-decoration: underline;
 }
