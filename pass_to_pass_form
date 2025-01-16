@@ -1,0 +1,261 @@
+Aqui está um passo a passo para criar uma paginação de formulário com React, com as páginas mencionadas (Dados Pessoais, Informações de Documento e Informações de Endereço).
+
+1. Estrutura Inicial do Projeto
+Primeiro, crie um novo projeto React (se ainda não tiver um) usando o Create React App:
+
+bash
+Copiar
+npx create-react-app formulario-paginado
+cd formulario-paginado
+npm start
+2. Instalar Dependências (Opcional)
+Embora a paginação possa ser feita sem bibliotecas externas, se você desejar usar algo como react-router-dom para navegação ou react-hook-form para gerenciar os inputs de maneira eficiente, instale-as:
+
+bash
+Copiar
+npm install react-router-dom react-hook-form
+Neste exemplo, vamos usar a abordagem de gerenciamento de estado simples com useState.
+
+3. Estrutura de Componentes
+Crie uma estrutura de componentes para as páginas e para a navegação entre elas.
+
+App.js: Componente principal que gerencia a navegação.
+Page1.js: Página para dados pessoais.
+Page2.js: Página para informações de documento.
+Page3.js: Página para informações de endereço.
+4. Implementação do App.js
+No componente App.js, vamos gerenciar o estado para a navegação entre as páginas. Utilizaremos o hook useState para controlar qual página está sendo exibida.
+
+jsx
+Copiar
+import React, { useState } from 'react';
+import './App.css';
+import Page1 from './Page1';
+import Page2 from './Page2';
+import Page3 from './Page3';
+
+function App() {
+  const [page, setPage] = useState(1);  // Controla a página atual
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    telefone: '',
+    senha: '',
+    confirmacaoSenha: '',
+    nacionalidade: '',
+    telefoneCelular: '',
+    tipoDocumento: '',
+    numeroDocumento: '',
+    dataEmissao: '',
+    fotoDocumento: '',
+    endereco: '',
+    cidade: '',
+    estado: '',
+    pais: ''
+  });
+
+  const handlePageChange = (nextPage) => {
+    setPage(nextPage);
+  };
+
+  const handleFormDataChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = () => {
+    // Aqui você pode adicionar lógica para enviar os dados para o backend
+    console.log(formData);
+  };
+
+  return (
+    <div className="App">
+      {page === 1 && (
+        <Page1 formData={formData} handleChange={handleFormDataChange} nextPage={() => handlePageChange(2)} />
+      )}
+      {page === 2 && (
+        <Page2 formData={formData} handleChange={handleFormDataChange} nextPage={() => handlePageChange(3)} prevPage={() => handlePageChange(1)} />
+      )}
+      {page === 3 && (
+        <Page3 formData={formData} handleChange={handleFormDataChange} prevPage={() => handlePageChange(2)} onSubmit={handleSubmit} />
+      )}
+    </div>
+  );
+}
+
+export default App;
+5. Componente Page1 (Dados Pessoais)
+No arquivo Page1.js, crie o formulário para os dados pessoais:
+
+jsx
+Copiar
+import React from 'react';
+
+function Page1({ formData, handleChange, nextPage }) {
+  return (
+    <div>
+      <h2>Dados Pessoais</h2>
+      <form>
+        <input
+          type="text"
+          name="nome"
+          placeholder="Nome Completo"
+          value={formData.nome}
+          onChange={handleChange}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        <input
+          type="tel"
+          name="telefone"
+          placeholder="Telefone"
+          value={formData.telefone}
+          onChange={handleChange}
+        />
+        <input
+          type="password"
+          name="senha"
+          placeholder="Senha"
+          value={formData.senha}
+          onChange={handleChange}
+        />
+        <input
+          type="password"
+          name="confirmacaoSenha"
+          placeholder="Confirmação de Senha"
+          value={formData.confirmacaoSenha}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="nacionalidade"
+          placeholder="Nacionalidade"
+          value={formData.nacionalidade}
+          onChange={handleChange}
+        />
+        <input
+          type="tel"
+          name="telefoneCelular"
+          placeholder="Telefone Celular"
+          value={formData.telefoneCelular}
+          onChange={handleChange}
+        />
+        <button type="button" onClick={nextPage}>Próximo</button>
+      </form>
+    </div>
+  );
+}
+
+export default Page1;
+6. Componente Page2 (Informações de Documento)
+No arquivo Page2.js, crie o formulário para as informações de documento:
+
+jsx
+Copiar
+import React from 'react';
+
+function Page2({ formData, handleChange, nextPage, prevPage }) {
+  return (
+    <div>
+      <h2>Informações de Documento</h2>
+      <form>
+        <input
+          type="text"
+          name="tipoDocumento"
+          placeholder="Tipo de Documento"
+          value={formData.tipoDocumento}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="numeroDocumento"
+          placeholder="Número do Documento"
+          value={formData.numeroDocumento}
+          onChange={handleChange}
+        />
+        <input
+          type="date"
+          name="dataEmissao"
+          value={formData.dataEmissao}
+          onChange={handleChange}
+        />
+        <input
+          type="file"
+          name="fotoDocumento"
+          onChange={handleChange}
+        />
+        <button type="button" onClick={prevPage}>Voltar</button>
+        <button type="button" onClick={nextPage}>Próximo</button>
+      </form>
+    </div>
+  );
+}
+
+export default Page2;
+7. Componente Page3 (Informações de Endereço)
+No arquivo Page3.js, crie o formulário para as informações de endereço:
+
+jsx
+Copiar
+import React from 'react';
+
+function Page3({ formData, handleChange, prevPage, onSubmit }) {
+  return (
+    <div>
+      <h2>Informações de Endereço</h2>
+      <form>
+        <input
+          type="text"
+          name="endereco"
+          placeholder="Endereço Completo"
+          value={formData.endereco}
+          onChange={handleChange}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="cidade"
+          placeholder="Cidade"
+          value={formData.cidade}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="estado"
+          placeholder="Estado"
+          value={formData.estado}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="pais"
+          placeholder="País"
+          value={formData.pais}
+          onChange={handleChange}
+        />
+        <button type="button" onClick={prevPage}>Voltar</button>
+        <button type="button" onClick={onSubmit}>Enviar</button>
+      </form>
+    </div>
+  );
+}
+
+export default Page3;
+8. Conclusão
+Agora, você tem um formulário com três páginas de entrada de dados. A navegação entre as páginas é feita através dos botões "Próximo" e "Voltar", que alteram o estado da página atual no componente principal App.js. Ao final, o formulário é enviado quando o usuário clicará em "Enviar" na última página.
+
+Essa é uma estrutura básica e você pode aprimorar com validações, envio de dados via API, ou outras melhorias conforme necessário.
