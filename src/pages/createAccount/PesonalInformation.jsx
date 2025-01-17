@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import styles from '../styles/CreateAccount.module.css';
+import styles from '../../styles/PersonalInformation.module.css';
 
 const calculateAge = (birthDate) => {
     const today = new Date();
@@ -75,9 +75,9 @@ function CreateAccount() {
             </div>
 
             <div className={styles.buttons}>
-            <button type="submit">Submit</button>
-                {/* <button type='button'>Preview</button>
-                <button type='submit'>Next</button> */}
+                <button type="submit">Submit</button>
+                <button type='button'>Preview</button>
+                <button type='submit'>Next</button> 
             </div>
         </form>
     );
