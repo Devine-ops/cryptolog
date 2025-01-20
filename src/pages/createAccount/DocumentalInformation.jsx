@@ -27,13 +27,17 @@ const schema = z.object ({
     documentNumber:z.string().regex(/^\d{11}$|^\d{3}\.\d{3}\.\d{3}-\d{2}$/, {
     message: "CPF must be in the format XXX.XXX.XXX-xx or 11 digits",
     }).refine(validateCPF, {message: "Invalid CPF digits"}),
-    dateOfExpiration:z.string().refine((date) => {
-        const inputDate = newData(date);
-        const today = newDate();
-        return inputDate > today;
-    } ,{mensage: "The expiration date must be in the future"}),
-})
-
+    
+    dateOfExpiration:z.string({
+        expirationDate:z.string().refine((date) => !isNaN(new Date(date).getTime()),
+        {message:"Invalid date format"})
+    }).refine((date) => {
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        const expirationDate = new Date(date);
+        return expirationDate >= today;
+    },{message: "The document is expired"})
+});
 
 function DocumentalInformation () {
 
@@ -52,16 +56,17 @@ function DocumentalInformation () {
 
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
-            <h1>hello</h1>
-            <div className={styles.backgorund_form}>
-            <label htmlFor="docs">Document Type:</label>
-                <select name="docs" id="docs" {...register("typeOfDocument.docs")} defaultValue="">
+            <h1>Documental Information</h1>
+            <div className={styles.background_form}>
+            <label htmlFor="docs" style={{display:'block'}}>Document Type:</label>
+            
+                <select name="typeOfDocument.docs" {...register("typeOfDocument.docs")} defaultValue="">
                     <option value="">Select a document</option>
                     <option value="Drives license">Drive's license</option>
                     <option value="Identity card">Identity card</option>
                     <option value="Passaport">Passaport</option>
                 </select>
-                <p>{errors.doc && errors.typeOfDocument?.message}</p>
+                <p>{errors.typeOfDocument?.docs?.message}</p>
                 <input {...register('documentNumber')}type="string" placeholder='Wiriter yor document number '/>
                 <p>{errors.documentNumber?.message}</p>
                 <input {...register('dateOfExpiration')}type="date" />
