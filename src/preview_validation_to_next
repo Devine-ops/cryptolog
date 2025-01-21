@@ -1,0 +1,30 @@
+Para adicionar a validação antes de avançar para a próxima etapa, você pode realizar a validação no componente de cada etapa individualmente (por exemplo, PersonalInformation, DocumentalInformation, AdressInformation). No entanto, a lógica para validação precisa ser chamada no momento certo, ou seja, antes de chamar a função nextStep para avançar para a próxima página.
+
+Aqui estão os passos gerais para implementar isso:
+
+Adicionar validação em cada componente: Cada componente de etapa (como PersonalInformation, DocumentalInformation, etc.) pode ter uma função de validação local, onde você verifica se os campos necessários foram preenchidos corretamente.
+
+Passar a função de validação para o componente: Quando você renderiza cada componente de etapa no CreateAccount, você passa uma função de validação que pode ser chamada antes de permitir que o usuário avance para a próxima etapa.
+
+Chamar a validação antes de avançar: A função nextStep só deve ser chamada se a validação da etapa atual passar.
+
+Vamos ver como seria essa abordagem sem fornecer um código pronto, apenas explicando a estrutura:
+
+Passos para validação:
+Adicione funções de validação no componente de cada etapa: No componente PersonalInformation, por exemplo, você pode ter uma função validate que verifica se os campos estão corretos. O mesmo pode ser feito nos outros componentes (DocumentalInformation, AdressInformation).
+
+Passar a função de validação do componente pai (CreateAccount) para cada etapa: No componente CreateAccount, ao invés de chamar diretamente nextStep ao clicar no botão "Next", você chamará a função de validação do componente de etapa atual. Se a validação for bem-sucedida, então você chama nextStep.
+
+Modificar a lógica do nextStep: O nextStep agora precisará verificar se a função de validação retornou com sucesso antes de avançar para a próxima etapa. Isso pode ser feito passando a função de validação para os componentes de cada etapa e, ao clicar no botão "Next", chamando a função de validação primeiro.
+
+Exemplo de fluxo de validação:
+No componente PersonalInformation:
+
+Criar uma função validate que checa se os campos obrigatórios estão preenchidos corretamente.
+A função validate deve retornar true ou false com base na validação.
+No componente CreateAccount:
+
+Modificar o nextStep para chamar a função validate do componente atual antes de avançar para o próximo passo. Se a validação falhar, o nextStep não será chamado e a navegação não ocorrerá até que a validação seja bem-sucedida.
+Passar a função de validação para os componentes:
+
+No componente CreateAccount, você pode passar a função de validação como uma prop para cada etapa, permitindo que a validação seja acionada de dentro dos componentes filhos.
