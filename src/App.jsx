@@ -2,9 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CryptoPrices from '../src/api_coingeko/Consumer';
 import Header from '../src/layout/Header';
-import PersonalInformation from './pages/createAccount/PesonalInformation'; 
-import DocumentalInformation from './pages/createAccount/DocumentalInformation';
-import AdressInformation from './pages/createAccount/AdressInformation';
+import CreateAccount from './pages/createAccount/CreateAccount';
+
 
 const App = () => {
   return (
@@ -15,9 +14,10 @@ const App = () => {
         <Route path="/" element={<CryptoPrices />} />
         
         {/* Exemplo de rota adicional */}
-        <Route path="/createaccount" element={<PersonalInformation />} />
-        <Route path="/documentalinformation" element={<DocumentalInformation />} />
-        <Route path='/adressinformation' element={<AdressInformation />} />
+        {/* <Route path="/createaccount1" element={<PersonalInformation />} /> */}
+        {/* <Route path="/documentalinformation" element={<DocumentalInformation />} />
+        <Route path='/adressinformation' element={<AdressInformation />} /> */}
+        <Route path='/createaccount' element={<CreateAccount />} />
       </Routes>
     </Router>
   );

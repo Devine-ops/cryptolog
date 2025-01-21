@@ -26,7 +26,7 @@ function addressInformation() {
     };
   
     return (
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form>
         <h1>Address Information</h1>
             <div className={styles.background_form}>
             <input type="text" placeholder="Complete address" {...register("completeAddress")} />
@@ -40,8 +40,6 @@ function addressInformation() {
     
             <input type="text" placeholder="Country" {...register("country")} />
             <p>{errors.country?.message}</p>
-    
-            <button type="submit">Submit</button>
         </div>
       </form>
 

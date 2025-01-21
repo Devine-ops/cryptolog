@@ -55,7 +55,7 @@ function DocumentalInformation () {
     }
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form>
             <h1>Documental Information</h1>
             <div className={styles.background_form}>
             <label htmlFor="docs" style={{display:'block'}}>Document Type:</label>
@@ -73,7 +73,6 @@ function DocumentalInformation () {
                 <p>{errors.dateOfExpiration?.message}</p>
                 <input {...register('imgDocument')}type="file" required/>
             </div>
-            <button typeof='submit'>submit</button>
         </form>
     );
 }

@@ -49,7 +49,7 @@ function CreateAccount() {
     }    
 
     return (
-        <form className={styles.container_form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={styles.container_form}>
             <h1>Personal Information</h1>
             <div className={styles.form_background}>
                 <input {...register('name')} type='text' placeholder='Complete name' />
@@ -72,12 +72,6 @@ function CreateAccount() {
 
                 <input {...register('phone')} type='tel' placeholder='Phone' />
                 <p>{errors.phone?.message}</p>
-            </div>
-
-            <div className={styles.buttons}>
-                <button type="submit">Submit</button>
-                <button type='button'>Preview</button>
-                <button type='submit'>Next</button> 
             </div>
         </form>
     );
