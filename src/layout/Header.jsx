@@ -17,8 +17,8 @@ function Header() {
 
             <div className={styles.action}>
                 <button className={styles.login}>Login</button>
-                <Link to='/createaccount'><
-                    button className={styles.register}>Register</button>
+                <Link to='/createaccount'>
+                    <button className={styles.register}>Register</button>
                 </Link>
             </div>
         </div>

@@ -1,5 +1,5 @@
 h1{
-    color: var(--gold);
+    color: #acf7ff;
 }
 
 .background_form > input{
@@ -7,5 +7,5 @@ h1{
 }
 
 .background_form p{
-    color: var(--gold);
+    color: #acf7ff;
 }
