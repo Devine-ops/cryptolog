@@ -6,7 +6,6 @@ import PersonalInformation from './PesonalInformation'
 import DocumentalInformation from './DocumentalInformation'
 import AddressInformation from './AddressInformation';
 import styles from '../../styles/CreateAccount.module.css'
-import { createAccount } from '../../services/api';
 
 function CreateAccount () {
     const [step, setStep] = useState(1);
@@ -42,10 +41,17 @@ function CreateAccount () {
         };
 
         try{
-            const response = await createAccount;
+            const response = await fetch('http://localhost:3000/api/create-user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(finalData),
+            });
             alert('Account created successfully!')
         } catch (error) {
             alert('Error creating account')
+            console.error(error);
         }
         
     }

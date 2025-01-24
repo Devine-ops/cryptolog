@@ -1,30 +1,39 @@
-Para adicionar a validação antes de avançar para a próxima etapa, você pode realizar a validação no componente de cada etapa individualmente (por exemplo, PersonalInformation, DocumentalInformation, AdressInformation). No entanto, a lógica para validação precisa ser chamada no momento certo, ou seja, antes de chamar a função nextStep para avançar para a próxima página.
-
-Aqui estão os passos gerais para implementar isso:
-
-Adicionar validação em cada componente: Cada componente de etapa (como PersonalInformation, DocumentalInformation, etc.) pode ter uma função de validação local, onde você verifica se os campos necessários foram preenchidos corretamente.
-
-Passar a função de validação para o componente: Quando você renderiza cada componente de etapa no CreateAccount, você passa uma função de validação que pode ser chamada antes de permitir que o usuário avance para a próxima etapa.
-
-Chamar a validação antes de avançar: A função nextStep só deve ser chamada se a validação da etapa atual passar.
-
-Vamos ver como seria essa abordagem sem fornecer um código pronto, apenas explicando a estrutura:
-
-Passos para validação:
-Adicione funções de validação no componente de cada etapa: No componente PersonalInformation, por exemplo, você pode ter uma função validate que verifica se os campos estão corretos. O mesmo pode ser feito nos outros componentes (DocumentalInformation, AdressInformation).
-
-Passar a função de validação do componente pai (CreateAccount) para cada etapa: No componente CreateAccount, ao invés de chamar diretamente nextStep ao clicar no botão "Next", você chamará a função de validação do componente de etapa atual. Se a validação for bem-sucedida, então você chama nextStep.
-
-Modificar a lógica do nextStep: O nextStep agora precisará verificar se a função de validação retornou com sucesso antes de avançar para a próxima etapa. Isso pode ser feito passando a função de validação para os componentes de cada etapa e, ao clicar no botão "Next", chamando a função de validação primeiro.
-
-Exemplo de fluxo de validação:
-No componente PersonalInformation:
-
-Criar uma função validate que checa se os campos obrigatórios estão preenchidos corretamente.
-A função validate deve retornar true ou false com base na validação.
-No componente CreateAccount:
-
-Modificar o nextStep para chamar a função validate do componente atual antes de avançar para o próximo passo. Se a validação falhar, o nextStep não será chamado e a navegação não ocorrerá até que a validação seja bem-sucedida.
-Passar a função de validação para os componentes:
-
-No componente CreateAccount, você pode passar a função de validação como uma prop para cada etapa, permitindo que a validação seja acionada de dentro dos componentes filhos.
+/cryptolog
+│
+├── /api                  # Backend (Express)
+│   ├── /controllers      # Lógica de controle para as rotas
+│   ├── /models           # Definições de banco de dados (se necessário)
+│   ├── /routes           # Definições das rotas
+│   ├── /middlewares      # Middleware (autenticação, validações, etc)
+│   ├── /utils            # Funções utilitárias
+│   ├── /config           # Configurações do servidor (ex: porta, DB)
+│   ├── server.js         # Arquivo principal do servidor Express
+│   ├── /node_modules     # Dependências do Node.js
+│   ├── package.json      # Dependências e scripts do backend
+│   └── .env              # Variáveis de ambiente (ex: credenciais DB, chave API)
+│
+├── /client                # Frontend (React, por exemplo)
+│   ├── /public           # Arquivos públicos (index.html, favicon, etc)
+│   ├── /src              # Código-fonte do frontend
+│   │   ├── /components   # Componentes React
+│   │   ├── /pages        # Páginas (Home, About, etc)
+│   │   ├── /hooks        # Custom hooks
+│   │   ├── /services     # Funções para comunicação com o backend
+│   │   ├── /styles       # Arquivos de estilo (CSS, SASS, etc)
+│   │   ├── App.js        # Componente principal
+│   │   └── index.js      # Ponto de entrada do React
+│   ├── /node_modules     # Dependências do frontend
+│   ├── package.json      # Dependências e scripts do frontend
+│   └── .env              # Variáveis de ambiente (se necessário)
+│
+├── /database              # Arquivos relacionados ao banco de dados
+│   ├── /migrations       # Scripts de migração de banco de dados
+│   └── /seeders          # Scripts para popular o banco de dados
+│
+├── /tests                 # Testes (backend e frontend)
+│   ├── /backend          # Testes do backend
+│   └── /frontend         # Testes do frontend
+│
+├── /docs                  # Documentação do projeto
+│
+└── README.md              # Descrição do projeto

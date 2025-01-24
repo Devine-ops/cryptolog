@@ -1,3 +1,5 @@
+import { typeOfDocument } from "@prisma/client";
+import { data } from "react-router-dom";
 import { z } from "zod";
 
 //Validate Personal Schema
@@ -53,10 +55,10 @@ function validateCPF(cpf) {
 
 export const documentalSchema = z.object ({
     typeOfDocument:z.object({
-        docs: z.enum(["Drives license", "Identity card", "Passaport"] ,{
+        docs: z.enum(["DRIVER_LICENSE", "IDENTITY_CARD", "PASSPORT"] ,{
             errorMap: () => ({message: "Please select a valid document type"})
         }),
-    }),    
+    }),
     documentNumber:z.string().regex(/^\d{11}$|^\d{3}\.\d{3}\.\d{3}-\d{2}$/, {
     message: "CPF must be in the format XXX.XXX.XXX-xx or 11 digits",
     }).refine(validateCPF, {message: "Invalid CPF digits"}),

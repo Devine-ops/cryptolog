@@ -15,9 +15,9 @@ function DocumentalInformation ({register, errors}) {
             
                 <select name="typeOfDocument.docs" {...register("typeOfDocument.docs")} defaultValue="">
                     <option value="">Select a document</option>
-                    <option value="Drives license">Drive's license</option>
-                    <option value="Identity card">Identity card</option>
-                    <option value="Passaport">Passaport</option>
+                    <option value="DRIVER_LICENSE">Drive's license</option>
+                    <option value="IDENTITY_CARD">Identity card</option>
+                    <option value="PASSPORT">Passaport</option>
                 </select>
                 <p>{errors.typeOfDocument?.docs?.message}</p>
                 <input {...register('documentNumber')}type="string" placeholder='Wiriter yor document number '/>

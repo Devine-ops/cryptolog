@@ -1,7 +1,7 @@
-const { PrismaClient } = require('@prisma/client');
-const primsa = new PrismaClient();
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
     const newUser = await prisma.user.create({
         data: useRouteLoaderData,
     });
