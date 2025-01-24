@@ -1,5 +1,4 @@
 import styles from '../../styles/AdressInformation.module.css'
-import { useForm } from 'react-hook-form';
 function AddressInformation({register, errors}) {
 
     return (

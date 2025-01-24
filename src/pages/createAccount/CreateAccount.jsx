@@ -6,6 +6,7 @@ import PersonalInformation from './PesonalInformation'
 import DocumentalInformation from './DocumentalInformation'
 import AddressInformation from './AddressInformation';
 import styles from '../../styles/CreateAccount.module.css'
+import { createAccount } from '../../services/api';
 
 function CreateAccount () {
     const [step, setStep] = useState(1);
@@ -34,13 +35,19 @@ function CreateAccount () {
 
     const prevStep = () => setStep((step) => step - 1);
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         const finalData = {
             ...formData,
             ...data,
         };
-        console.log(finalData);
-        alert('form submited successfully!')
+
+        try{
+            const response = await createAccount;
+            alert('Account created successfully!')
+        } catch (error) {
+            alert('Error creating account')
+        }
+        
     }
     
     return(
