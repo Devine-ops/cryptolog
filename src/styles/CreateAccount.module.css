@@ -1,0 +1,22 @@
+.background{
+    height: calc(100vh - 95px);
+    background-image: url('../assets/backgroundCreateAccount.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container_form{
+    border-radius: 30px;
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 90px;
+}
+.container_form h1{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.button_container{
+    text-align: center;
+    margin-top: 30px;
+}
