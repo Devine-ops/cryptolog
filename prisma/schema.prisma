@@ -8,9 +8,9 @@ datasource db {
 }
 
 model User {
-  id              Int            @id @default(autoincrement())
+  id              Int      @id @default(autoincrement())
   name            String
-  email           String         @unique
+  email           String   @unique
   password        String
   dateOfBirth     DateTime
   nationality     String
@@ -22,12 +22,6 @@ model User {
   postalCode      String
   state           String
   country         String
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-}
-
-enum typeOfDocument {
-  DRIVER_LICENSE
-  IDENTITY_CARD
-  PASSPORT
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
