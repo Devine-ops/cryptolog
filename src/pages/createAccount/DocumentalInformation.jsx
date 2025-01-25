@@ -1,10 +1,4 @@
-import {useForm} from 'react-hook-form'
-import {number, z} from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod';
 import styles from '../../styles/DocumentalInformation.module.css'
-
-
-
 function DocumentalInformation ({register, errors}) {
 
     return(

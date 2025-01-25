@@ -37,8 +37,8 @@ function CreateAccount () {
     const onSubmit = async (data) => {
         const finalData = {
             ...formData,
-            ...data,
-        };
+            ...data, 
+        }; 
 
         try{
             const response = await fetch('http://localhost:3000/api/create-user', {
@@ -58,7 +58,7 @@ function CreateAccount () {
     
     return(
         <div className={styles.background}>
-            <form className={styles.container_form} onSubmit={handleSubmit(step === 3 ? onSubmit : nextStep)}>
+            <form className={styles.container_form} onSubmit={handleSubmit(step === 3 ? onSubmit : nextStep)} enctype="multipart/form-data">
                 {step === 1 && (
                 <PersonalInformation register={register} errors={errors} nextStep={nextStep} />
             )}

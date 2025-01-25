@@ -24,4 +24,6 @@ model User {
   country         String
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+  acount          String
+  agency          String
 }

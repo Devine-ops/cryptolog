@@ -8,6 +8,14 @@ const prisma = new PrismaClient();
 app.use(json());
 app.use(cors());
 
+function generateAcountAndAgency(size){
+  let number = '';
+  for (let i = 0; i < size; i++){
+    number += Math.floor(Math.random() * 10);
+  }
+  return number.toString();
+}
+
 // Rota API
 app.post('/api/create-user', async (req, res) => {
   const {
@@ -26,6 +34,9 @@ app.post('/api/create-user', async (req, res) => {
     country,
   } = req.body;
 
+  const acount = generateAcountAndAgency(5);
+  const agency = generateAcountAndAgency(6);
+  
   try {
     const formattedDateOfBirth = new Date(dateOfBirth).toISOString();
     const user = await prisma.user.create({
@@ -41,6 +52,8 @@ app.post('/api/create-user', async (req, res) => {
         imgDocument,
         completeAddress,
         postalCode,
+        acount,
+        agency,
         state,
         country,
       },

@@ -1,6 +1,6 @@
 import { typeOfDocument } from "@prisma/client";
 import { data } from "react-router-dom";
-import { z } from "zod";
+import { object, string, z } from "zod";
 
 //Validate Personal Schema
 
@@ -81,9 +81,8 @@ export const documentalSchema = z.object ({
     }, {
         message: "Please select a valid file",
     }),
-    
-});
 
+});
 //Validate Address Information
 
 export const addressSchema = z.object({
