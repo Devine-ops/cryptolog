@@ -5,6 +5,7 @@
     justify-content: center;
     flex-direction: column;
     background-color: var(--dark-gray);
+    height: calc(100vh - 95px);
     
 }
 

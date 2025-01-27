@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,13 +8,22 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  phone     Int      @unique
-  cpf       Int      @unique
-  cep       Int
-  age       Int
-  address   String
-  createdAt DateTime @default(now())
+  id              Int      @id @default(autoincrement())
+  name            String
+  email           String   @unique
+  password        String
+  dateOfBirth     DateTime
+  nationality     String
+  phone           String
+  typeOfDocument  Json
+  documentNumber  String
+  imgDocument     Json
+  completeAddress String
+  postalCode      String
+  state           String
+  country         String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  acount          String
+  agency          String
 }

@@ -1,0 +1,39 @@
+/cryptolog
+│
+├── /api                  # Backend (Express)
+│   ├── /controllers      # Lógica de controle para as rotas
+│   ├── /models           # Definições de banco de dados (se necessário)
+│   ├── /routes           # Definições das rotas
+│   ├── /middlewares      # Middleware (autenticação, validações, etc)
+│   ├── /utils            # Funções utilitárias
+│   ├── /config           # Configurações do servidor (ex: porta, DB)
+│   ├── server.js         # Arquivo principal do servidor Express
+│   ├── /node_modules     # Dependências do Node.js
+│   ├── package.json      # Dependências e scripts do backend
+│   └── .env              # Variáveis de ambiente (ex: credenciais DB, chave API)
+│
+├── /client                # Frontend (React, por exemplo)
+│   ├── /public           # Arquivos públicos (index.html, favicon, etc)
+│   ├── /src              # Código-fonte do frontend
+│   │   ├── /components   # Componentes React
+│   │   ├── /pages        # Páginas (Home, About, etc)
+│   │   ├── /hooks        # Custom hooks
+│   │   ├── /services     # Funções para comunicação com o backend
+│   │   ├── /styles       # Arquivos de estilo (CSS, SASS, etc)
+│   │   ├── App.js        # Componente principal
+│   │   └── index.js      # Ponto de entrada do React
+│   ├── /node_modules     # Dependências do frontend
+│   ├── package.json      # Dependências e scripts do frontend
+│   └── .env              # Variáveis de ambiente (se necessário)
+│
+├── /database              # Arquivos relacionados ao banco de dados
+│   ├── /migrations       # Scripts de migração de banco de dados
+│   └── /seeders          # Scripts para popular o banco de dados
+│
+├── /tests                 # Testes (backend e frontend)
+│   ├── /backend          # Testes do backend
+│   └── /frontend         # Testes do frontend
+│
+├── /docs                  # Documentação do projeto
+│
+└── README.md              # Descrição do projeto
