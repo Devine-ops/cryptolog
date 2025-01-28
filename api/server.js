@@ -1,6 +1,8 @@
 import express, { json } from 'express';
 import cors from 'cors';
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const app = express();
 const prisma = new PrismaClient();
@@ -34,16 +36,17 @@ app.post('/api/create-user', async (req, res) => {
     country,
   } = req.body;
 
-  const acount = generateAcountAndAgency(5);
+  const acount = generateAcountAndAgency(4);
   const agency = generateAcountAndAgency(6);
   
   try {
+    const hashedPassword = await bcrypt.hash(password, 10);
     const formattedDateOfBirth = new Date(dateOfBirth).toISOString();
     const user = await prisma.user.create({
       data: {
         name,
         email,
-        password,
+        password: hashedPassword,
         dateOfBirth: formattedDateOfBirth,
         nationality,
         phone,
